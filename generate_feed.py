@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 # Nama file input (artikel) dan output (feed)
-ARTIKEL_FILE = "artikel-pr"
+ARTIKEL_FILE = "artikel-pr.txt"
 OUTPUT_FILE = "feed.xml"
 
 def read_articles(filename):
