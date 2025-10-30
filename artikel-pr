@@ -21,7 +21,8 @@ def main():
     items = ""
     for line in lines:
         try:
-            title, link, desc = line.split("|")
+            title, link = line.split("|")
+            desc = ""  # bisa juga isi deskripsi default
             item = f"""
   <item>
     <title>{title.strip()}</title>
@@ -43,4 +44,4 @@ def main():
         f.write(output)
 
 if __name__ == "__main__":
-    main() 
+    main()
