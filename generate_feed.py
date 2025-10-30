@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 # Nama file input (artikel) dan output (feed)
-ARTIKEL_FILE = "artikel-pr.txt"
+ARTIKEL_FILE = "artikel-pr.txt"  # pastikan ekstensinya benar
 OUTPUT_FILE = "feed.xml"
 
 def read_articles(filename):
@@ -28,6 +28,7 @@ def generate_feed(articles):
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = art["title"]
         ET.SubElement(item, "link").text = art["link"]
+        ET.SubElement(item, "pubDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
 
     tree = ET.ElementTree(rss)
     tree.write(OUTPUT_FILE, encoding="utf-8", xml_declaration=True)
