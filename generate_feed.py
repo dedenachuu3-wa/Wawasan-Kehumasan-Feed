@@ -22,16 +22,17 @@ def generate_feed(articles):
     ET.SubElement(channel, "title").text = "Wawasan Kehumasan Feed"
     ET.SubElement(channel, "link").text = "https://dedenachuu3-wa.github.io/"
     ET.SubElement(channel, "description").text = "Kumpulan artikel Wawasan Kehumasan"
-    ET.SubElement(channel, "lastBuildDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
+    ET.SubElement(channel, "lastBuildDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT")
 
     for art in articles:
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = art["title"]
         ET.SubElement(item, "link").text = art["link"]
-        ET.SubElement(item, "pubDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
+        ET.SubElement(item, "pubDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT")
 
     tree = ET.ElementTree(rss)
     tree.write(OUTPUT_FILE, encoding="utf-8", xml_declaration=True)
+
 
 if __name__ == "__main__":
     arts = read_articles(ARTIKEL_FILE)
